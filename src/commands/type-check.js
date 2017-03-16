@@ -49,7 +49,7 @@ function invokeFlow (dirPath) {
     ? [ '--color', 'always' ]
     : [ ]
 
-  return execa('flow', [ dirPath, ...colorOptions ])
+  return execa('flow', [ 'check', dirPath, ...colorOptions ])
 }
 
 async function exists (path) {
