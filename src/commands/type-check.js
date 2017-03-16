@@ -3,6 +3,7 @@ import fs from 'mz/fs'
 import path from 'path'
 import supportsColor from 'supports-color'
 import { getBabelPlugins, invokeBabel } from '../babel'
+import run from '../run'
 
 const DEFAULT_BABEL_PLUGINS = [
   '@andywer/babel-plugin-transform-dctypes-to-flow'
@@ -66,7 +67,7 @@ function invokeFlow (dirPath) {
     ? [ '--color', 'always' ]
     : [ ]
 
-  return execa('flow', [ 'check', dirPath, ...colorOptions ])
+  return run('flow', [ 'check', dirPath, ...colorOptions ])
 }
 
 exists :: string => Promise<bool>

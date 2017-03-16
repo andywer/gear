@@ -1,4 +1,4 @@
-const execa = require('execa')
+import run from './run'
 
 const DEFAULT_FLOW_PLUGIN = 'babel-plugin-transform-flow-strip-types'
 
@@ -22,5 +22,5 @@ export function invokeBabel (options, { plugins, presets }) {
   const pluginsOption = `--plugins=${plugins.join(',')}`
   const presetsOption = `--presets=${presets.join(',')}`
 
-  return execa('babel', options.concat([ pluginsOption, presetsOption ]))
+  return run('babel', options.concat([ pluginsOption, presetsOption ]))
 }
