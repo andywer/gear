@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@andywer/babel-cli-dctypes": "^7.0.0-alpha.1",
-    "@andywer/babel-plugin-transform-dctypes-comments": "^0.1.0",
-    "@andywer/babel-plugin-transform-dctypes-to-flow": "^0.1.0",
+    "@andywer/babel-plugin-transform-dctypes-comments": "^0.2.0",
+    "@andywer/babel-plugin-transform-dctypes-to-flow": "^0.2.0",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-preset-env": "^2.0.0-alpha.1",
     "execa": "^0.6.1",

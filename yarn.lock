@@ -49,15 +49,16 @@
   dependencies:
     babel-plugin-syntax-flow "^6.18.0"
 
-"@andywer/babel-plugin-transform-dctypes-comments@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@andywer/babel-plugin-transform-dctypes-comments/-/babel-plugin-transform-dctypes-comments-0.1.0.tgz#af4ef2a6c228d9ed01ce906388ccffa78d8484ae"
+"@andywer/babel-plugin-transform-dctypes-comments@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@andywer/babel-plugin-transform-dctypes-comments/-/babel-plugin-transform-dctypes-comments-0.2.0.tgz#de6803ceee88aa12b25f4e39cf33234d11b59c44"
   dependencies:
     "@andywer/babel-plugin-syntax-dctypes" "^0.1.0"
+    "@andywer/babel-plugin-transform-dctypes-to-flow" "^0.2.0"
 
-"@andywer/babel-plugin-transform-dctypes-to-flow@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@andywer/babel-plugin-transform-dctypes-to-flow/-/babel-plugin-transform-dctypes-to-flow-0.1.0.tgz#64d6884845854c8267feb2a3a3debe4132cd3073"
+"@andywer/babel-plugin-transform-dctypes-to-flow@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@andywer/babel-plugin-transform-dctypes-to-flow/-/babel-plugin-transform-dctypes-to-flow-0.2.0.tgz#87441bf4ebef5c534b790d05cf3a50fe86cd6c6a"
   dependencies:
     "@andywer/babel-plugin-syntax-dctypes" "^0.1.0"
 
