@@ -1,0 +1,11 @@
+{
+  "name": "@andywer/gear",
+  "version": "0.1.0",
+  "author": "Andy Wermke <andy@dev.next-step-software.com>",
+  "engines": {
+    "node": ">= 7.0"
+  },
+  "bin": {
+    "gear": "src/cli"
+  }
+}
