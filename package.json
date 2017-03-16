@@ -7,5 +7,14 @@
   },
   "bin": {
     "gear": "src/cli"
+  },
+  "dependencies": {
+    "@andywer/babel-cli-dctypes": "^7.0.0-alpha.1",
+    "@andywer/babel-plugin-transform-dctypes-comments": "^0.1.0",
+    "@andywer/babel-plugin-transform-dctypes-to-flow": "^0.1.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-preset-env": "^1.2.2",
+    "execa": "^0.6.1",
+    "meow": "^3.7.0"
   }
 }
