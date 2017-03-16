@@ -1,4 +1,5 @@
 .flowcheck/
+lib/
 node_modules/
 test/.fixtures/.flowcheck/
 npm-debug.log

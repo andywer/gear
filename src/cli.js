@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
-const meow = require('meow')
-const commands = require('./commands')
+import 'babel-polyfill'
+import camelcase from 'camelcase'
+import meow from 'meow'
+import * as commands from './commands'
 
 const cli = meow(`
   Usage
@@ -14,6 +16,8 @@ const cli = meow(`
                                   'strip-types' (default).
     --help                        Print this help.
     -w, --watch                   Watch files, recompile on change.
+
+  Visit https://github.com/andywer/gear for more information.
 `, {
   alias: {
     d: 'out-dir',
@@ -22,7 +26,7 @@ const cli = meow(`
 })
 
 const [ commandName, ...args ] = cli.input
-const command = commandName ? commands[ commandName.toLowerCase() ] : null
+const command = commandName ? commands[ camelcase(commandName.toLowerCase()) ] : null
 
 if (!commandName || cli.flags.help) {
   cli.showHelp()

@@ -1,4 +1,2 @@
-module.exports = {
-  compile: require('./compile'),
-  'type-check': require('./type-check')
-}
+export { default as compile } from './compile'
+export { default as typeCheck } from './type-check'

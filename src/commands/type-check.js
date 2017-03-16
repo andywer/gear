@@ -1,15 +1,17 @@
-const execa = require('execa')
-const fs = require('mz/fs')
-const path = require('path')
-const supportsColor = require('supports-color')
-const { getBabelPlugins, invokeBabel } = require('../babel')
+import execa from 'execa'
+import fs from 'mz/fs'
+import path from 'path'
+import supportsColor from 'supports-color'
+import { getBabelPlugins, invokeBabel } from '../babel'
 
 const DEFAULT_BABEL_PLUGINS = [
   '@andywer/babel-plugin-transform-dctypes-to-flow'
 ]
 const DEFAULT_BABEL_PRESETS = []
 
-module.exports = typeCheck
+typeCheck :: (string[], Object) => Promise<*>
+
+export default typeCheck
 
 async function typeCheck (args, flags) {
   const [ sourceDirPath, ...unhandledSourceDirs ] = args
@@ -39,9 +41,13 @@ async function typeCheck (args, flags) {
   await invokeFlow(tempDirPath)
 }
 
+noStripTypes :: string => bool
+
 function noStripTypes (pluginName) {
   return !pluginName.endsWith('flow-strip-types')
 }
+
+createFlowConfig :: string => Promise<*>
 
 function createFlowConfig (filePath) {
   // TODO: The node_modules/ path(s) should be rather dynamic
@@ -49,8 +55,10 @@ function createFlowConfig (filePath) {
     [include]
     ../node_modules/
   `
-  return fs.writeFile(filePath, content)
+  return fs.writeFile(filePath, content, { encoding: 'utf8' })
 }
+
+invokeFlow :: string => Promise<Object>
 
 function invokeFlow (dirPath) {
   // Flow's auto color detection will always disable colors when invoked using execa
@@ -60,6 +68,8 @@ function invokeFlow (dirPath) {
 
   return execa('flow', [ 'check', dirPath, ...colorOptions ])
 }
+
+exists :: string => Promise<bool>
 
 async function exists (path) {
   try {

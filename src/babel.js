@@ -2,12 +2,9 @@ const execa = require('execa')
 
 const DEFAULT_FLOW_PLUGIN = 'babel-plugin-transform-flow-strip-types'
 
-module.exports = {
-  getBabelPlugins,
-  invokeBabel
-}
+getBabelPlugins :: Object => string[]
 
-function getBabelPlugins (flags) {
+export function getBabelPlugins (flags) {
   const plugins = []
 
   if (flags.flow) {
@@ -19,7 +16,9 @@ function getBabelPlugins (flags) {
   return plugins
 }
 
-function invokeBabel (options, { plugins, presets }) {
+invokeBabel :: (string[], { plugins: string[], presets: string[] }) => Promise<Object>
+
+export function invokeBabel (options, { plugins, presets }) {
   const pluginsOption = `--plugins=${plugins.join(',')}`
   const presetsOption = `--presets=${presets.join(',')}`
 

@@ -1,4 +1,4 @@
-const { getBabelPlugins, invokeBabel } = require('../babel')
+import { getBabelPlugins, invokeBabel } from '../babel'
 
 const DEFAULT_BABEL_PLUGINS = [
   '@andywer/babel-plugin-transform-dctypes-comments'
@@ -7,9 +7,9 @@ const DEFAULT_BABEL_PRESETS = [
   'babel-preset-env'
 ]
 
-module.exports = compile
+compile :: (string[], Object) => Promise<*>
 
-function compile (args, flags) {
+export default function compile (args, flags) {
   const [ sourceDirPath, ...unhandledSourceDirs ] = args
   const { outDir } = flags
 
@@ -29,6 +29,8 @@ function compile (args, flags) {
 
   return invokeBabel([ sourceDirPath, '-d', outDir, ...additionalBabelOptions ], { plugins, presets })
 }
+
+getAdditionalBabelOptions :: Object => string[]
 
 function getAdditionalBabelOptions (flags) {
   const additionalOptions = []
