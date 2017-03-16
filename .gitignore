@@ -1,3 +1,4 @@
+.flowcheck/
 node_modules/
 test/.fixtures/.flowcheck/
 npm-debug.log
