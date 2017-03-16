@@ -6,7 +6,7 @@
     "node": ">= 7.0"
   },
   "bin": {
-    "gear": "src/cli"
+    "gear": "src/cli.js"
   },
   "dependencies": {
     "@andywer/babel-cli-dctypes": "^7.0.0-alpha.1",
