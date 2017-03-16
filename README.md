@@ -4,6 +4,17 @@ A little experiment of mine. A wrapper around [Babel](https://babeljs.io/), [bab
 
 *Caution: Very early stage!*
 
+## Installation
+
+```sh
+yarn add --dev @andywer/gear
+```
+
+or using npm
+
+```sh
+npm install --save-dev @andywer/gear
+```
 
 ## Usage
 
@@ -12,17 +23,14 @@ Consider this sample `package.json` of a project using `gear`:
 ```json
 {
   "scripts": {
-    "build": "gear compile src/ -d lib/ --prod",
-    "build:dev": "gear compile src/ -d lib/ --dev",
-    "test": "npm run build:dev && ava",
-    "watch": "gear compile src/ -d lib/ --watch"
+    "build": "gear compile src/ -d lib/",
+    "test": "gear type-check src/"
   },
   "babel-preset-env": {
     "targets": {
       "browsers": "last 2 versions",
       "node": ">= 4"
     }
-  },
-  "devDependencies": {}
+  }
 }
 ```
