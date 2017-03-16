@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "author": "Andy Wermke <andy@dev.next-step-software.com>",
+  "repository": "andywer/gear",
   "scripts": {
     "build": "node lib/cli compile src/ -d lib/",
     "test": "node lib/cli type-check src/",
@@ -14,6 +15,12 @@
   "files": [
     "lib/",
     "yarn.lock"
+  ],
+  "keywords": [
+    "types",
+    "flow",
+    "babel",
+    "hindley-milner"
   ],
   "dependencies": {
     "@andywer/babel-cli-dctypes": "^7.0.0-alpha.1",
