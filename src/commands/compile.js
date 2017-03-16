@@ -1,4 +1,4 @@
-const execa = require('execa')
+const { getBabelPlugins, invokeBabel } = require('../babel')
 
 const DEFAULT_BABEL_PLUGINS = [
   '@andywer/babel-plugin-transform-dctypes-comments'
@@ -6,11 +6,10 @@ const DEFAULT_BABEL_PLUGINS = [
 const DEFAULT_BABEL_PRESETS = [
   'babel-preset-env'
 ]
-const DEFAULT_FLOW_PLUGIN = 'babel-plugin-transform-flow-strip-types'
 
 module.exports = compile
 
-function compile (args, flags, logger) {
+function compile (args, flags) {
   const [ sourceDirPath, ...unhandledSourceDirs ] = args
   const { outDir } = flags
 
@@ -25,7 +24,7 @@ function compile (args, flags, logger) {
   }
 
   const additionalBabelOptions = getAdditionalBabelOptions(flags)
-  const plugins = getBabelPlugins(flags)
+  const plugins = DEFAULT_BABEL_PLUGINS.concat(getBabelPlugins(flags))
   const presets = DEFAULT_BABEL_PRESETS
 
   return invokeBabel([ sourceDirPath, '-d', outDir, ...additionalBabelOptions ], { plugins, presets })
@@ -43,23 +42,4 @@ function getAdditionalBabelOptions (flags) {
   // --copy-files
 
   return additionalOptions
-}
-
-function getBabelPlugins (flags) {
-  const plugins = DEFAULT_BABEL_PLUGINS
-
-  if (flags.flow) {
-    plugins.push(`babel-plugin-transform-flow-${flags.flow}`)
-  } else {
-    plugins.push(DEFAULT_FLOW_PLUGIN)
-  }
-
-  return plugins
-}
-
-function invokeBabel (options, { plugins, presets }) {
-  const pluginsOption = `--plugins=${plugins.join(',')}`
-  const presetsOption = `--presets=${presets.join(',')}`
-
-  return execa('babel', options.concat([ pluginsOption, presetsOption ]))
 }

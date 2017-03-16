@@ -6,6 +6,7 @@ const commands = require('./commands')
 const cli = meow(`
   Usage
     $ gear compile <source dir> -d <output dir>
+    $ gear type-check <source dir>
 
   Options
     -d, --out-dir <output dir>    Set output directory.
