@@ -14,7 +14,7 @@
     "@andywer/babel-plugin-transform-dctypes-comments": "^0.1.0",
     "@andywer/babel-plugin-transform-dctypes-to-flow": "^0.1.0",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
-    "babel-preset-env": "^1.2.2",
+    "babel-preset-env": "^2.0.0-alpha.1",
     "execa": "^0.6.1",
     "flow-bin": "^0.41.0",
     "meow": "^3.7.0",
