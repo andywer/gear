@@ -29,7 +29,7 @@ async function typeCheck (args, flags) {
     await fs.mkdir(tempDirPath)
   }
   if (!await exists(path.join(tempDirPath, '.flowconfig'))) {
-    await fs.writeFile(path.join(tempDirPath, '.flowconfig'), '')
+    await createFlowConfig(path.join(tempDirPath, '.flowconfig'))
   }
   await invokeBabel([ sourceDirPath, '-d', tempDirPath ], { plugins, presets })
 
@@ -41,6 +41,15 @@ async function typeCheck (args, flags) {
 
 function noStripTypes (pluginName) {
   return !pluginName.endsWith('flow-strip-types')
+}
+
+function createFlowConfig (filePath) {
+  // TODO: The node_modules/ path(s) should be rather dynamic
+  const content = `
+    [include]
+    ../node_modules/
+  `
+  return fs.writeFile(filePath, content)
 }
 
 function invokeFlow (dirPath) {
