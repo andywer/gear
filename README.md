@@ -71,6 +71,15 @@ async function exists (path) {
 ```
 
 
+## Why not just use TypeScript or Flow as it is?
+
+Because TypeScript is kind of a closed ecosystem on its own and Flow is written in OCAML. Gear tries to stick to the tech stack you already have as much as possible.
+
+*And thus the stack becomes easily hackable.*
+
+Write a Babel plugin, even change the type syntax and it will work. And it even requires little effort to use it with real-world code since it is built around the tools you use anyway.
+
+
 ## License
 
 Released under the terms of the MIT license.
