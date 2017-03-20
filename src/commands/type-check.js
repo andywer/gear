@@ -3,6 +3,7 @@ import fs from 'mz/fs'
 import path from 'path'
 import supportsColor from 'supports-color'
 import { getBabelPlugins, invokeBabel } from '../babel'
+import type { Logger } from '../logger'
 import run from '../run'
 
 const DEFAULT_BABEL_PLUGINS = [
@@ -10,11 +11,11 @@ const DEFAULT_BABEL_PLUGINS = [
 ]
 const DEFAULT_BABEL_PRESETS = []
 
-typeCheck :: (string[], Object) => Promise<*>
-
 export default typeCheck
 
-async function typeCheck (args, flags) {
+typeCheck :: (string[], Object, Logger) => Promise<*>
+
+async function typeCheck (args, flags, logger) {
   const [ sourceDirPath, ...unhandledSourceDirs ] = args
 
   if (!sourceDirPath) {
@@ -39,7 +40,9 @@ async function typeCheck (args, flags) {
   // Dirty, dirty hack:
   // It seems flow is sometimes still operating on the previous file contents, so we delay...
   await new Promise(resolve => setTimeout(resolve, 250))
-  await invokeFlow(tempDirPath)
+  await invokeFlow(tempDirPath, logger)
+
+  logger.success(`Type check ok`)
 }
 
 noStripTypes :: string => bool

@@ -1,4 +1,5 @@
 import { getBabelPlugins, invokeBabel } from '../babel'
+import type { Logger } from '../logger'
 
 const DEFAULT_BABEL_PLUGINS = [
   '@andywer/babel-plugin-transform-dctypes-comments'
@@ -7,9 +8,11 @@ const DEFAULT_BABEL_PRESETS = [
   'babel-preset-env'
 ]
 
-compile :: (string[], Object) => Promise<*>
+compile :: (string[], Object, Logger) => Promise<*>
 
-export default function compile (args, flags) {
+export default compile
+
+async function compile (args, flags, logger) {
   const [ sourceDirPath, ...unhandledSourceDirs ] = args
   const { outDir } = flags
 
@@ -27,7 +30,9 @@ export default function compile (args, flags) {
   const plugins = DEFAULT_BABEL_PLUGINS.concat(getBabelPlugins(flags))
   const presets = DEFAULT_BABEL_PRESETS
 
-  return invokeBabel([ sourceDirPath, '-d', outDir, ...additionalBabelOptions ], { plugins, presets })
+  await invokeBabel([ sourceDirPath, '-d', outDir, ...additionalBabelOptions ], { plugins, presets })
+
+  logger.success(`Compiled`)
 }
 
 getAdditionalBabelOptions :: Object => string[]

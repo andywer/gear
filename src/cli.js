@@ -4,6 +4,7 @@ import 'babel-polyfill'
 import camelcase from 'camelcase'
 import meow from 'meow'
 import * as commands from './commands'
+import { createLogger } from './logger'
 
 const cli = meow(`
   Usage
@@ -31,7 +32,7 @@ const command = commandName ? commands[ camelcase(commandName.toLowerCase()) ] :
 if (!commandName || cli.flags.help) {
   cli.showHelp()
 } else if (command) {
-  command(args, cli.flags, console)
+  command(args, cli.flags, createLogger())
 } else {
   throw new Error(`Unknown command: ${commandName}`)
 }
