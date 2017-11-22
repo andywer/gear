@@ -2,7 +2,7 @@
 
 Bootstrap typed JavaScript projects in less than a minute or easily add types to untyped code. Built around [Babel 7](https://babeljs.io/), [Flow](https://flowtype.org/), [babel-preset-env](https://babeljs.io/) and [functional type syntax](https://github.com/andywer/proposal-double-colon-types).
 
-The tool is written using itself. So have a look at its own code if your interested, [type-check.js](./src/commands/type-check.js) is quite a good example, for instance.
+The tool is written using itself, so have a look at its own code if you are interested. [type-check.js](./src/commands/type-check.js) is quite a good example, for instance.
 
 I wanted to play a little with Hindley-Milner types in JavaScript, see how it feels and by the way reduce the boilerplate necessary to get starting with typed JavaScript.
 
